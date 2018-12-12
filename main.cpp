@@ -11,7 +11,7 @@ TEST_CASE("Game exists","[score]")
     REQUIRE(g != NULL);
 }
 
-TEST_CASE("Gutter Game Return 0","[score]")
+TEST_CASE("Gutter Game Scores 0","[score]")
 {
     // Arrange
     Game g;
@@ -23,7 +23,7 @@ TEST_CASE("Gutter Game Return 0","[score]")
     REQUIRE(0 == g.ScoreGame());
 }
 
-TEST_CASE("Single Pin Game Returns 20","[score]")
+TEST_CASE("Single Pin Game Scores 20","[score]")
 {
     // Arrange
     Game g;
@@ -33,4 +33,19 @@ TEST_CASE("Single Pin Game Returns 20","[score]")
     }
     // Assert
     REQUIRE(20 == g.ScoreGame());
+}
+
+TEST_CASE("Roll 5,5,3 Scores 16 (single spare)","[score]")
+{
+    // Arrange
+    Game g;
+    // Act
+    g.Roll(5);
+    g.Roll(5);
+    g.Roll(3);
+    for (int roll = 0; roll < 17; roll++) {
+        g.Roll(0);
+    }
+    // Assert
+    REQUIRE(16 == g.ScoreGame());
 }

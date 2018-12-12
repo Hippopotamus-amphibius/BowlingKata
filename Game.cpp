@@ -9,7 +9,12 @@
  * @param pinsKnockedDown
  */
 void Game::Roll(int pinsKnockedDown) {
+    if (spare) score += pinsKnockedDown;
     score += pinsKnockedDown;
+    pinsUp -= pinsKnockedDown;
+    rollNumberWithinFrame %= 1;
+    spare = rollNumberWithinFrame == 2 ? pinsUp == 0 : false;
+    if (pinsUp < 1) pinsUp = 0;
 }
 
 /**

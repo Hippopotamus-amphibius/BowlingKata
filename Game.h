@@ -8,6 +8,9 @@
 
 class Game {
     int score = 0;
+    int pinsUp = 10;
+    bool spare = false;
+    int rollNumberWithinFrame = 1;
 public:
     void Roll(int pinsKnockedDown);
     int ScoreGame();
