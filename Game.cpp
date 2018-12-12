@@ -4,10 +4,18 @@
 
 #include "Game.h"
 
-void Game::Roll(int i) {
-
+/**
+ * Adds a roll to the game score card
+ * @param pinsKnockedDown
+ */
+void Game::Roll(int pinsKnockedDown) {
+    score += pinsKnockedDown;
 }
 
+/**
+ *
+ * @return g
+ */
 int Game::ScoreGame() {
-    return 0;
+    return score;
 }

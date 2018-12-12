@@ -7,9 +7,9 @@
 
 
 class Game {
-
+    int score = 0;
 public:
-    void Roll(int i);
+    void Roll(int pinsKnockedDown);
     int ScoreGame();
 };
 

@@ -15,11 +15,22 @@ TEST_CASE("Gutter Game Return 0","[score]")
 {
     // Arrange
     Game g;
-    int pins = 0;
     // Act
     for (int roll = 0; roll < 20; roll++) {
-        g.Roll(pins);
+        g.Roll(0);
     }
     // Assert
-    REQUIRE(g.ScoreGame() == 0);
+    REQUIRE(0 == g.ScoreGame());
+}
+
+TEST_CASE("Single Pin Game Returns 20","[score]")
+{
+    // Arrange
+    Game g;
+    // Act
+    for (int roll = 0; roll < 20; roll++) {
+        g.Roll(1);
+    }
+    // Assert
+    REQUIRE(20 == g.ScoreGame());
 }
