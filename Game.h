@@ -8,6 +8,9 @@
 
 class Game {
 
+public:
+    void Roll(int i);
+    int ScoreGame();
 };
 
 
