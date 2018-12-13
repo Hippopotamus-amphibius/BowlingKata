@@ -37,7 +37,8 @@ void Game::AddSpareStrikeBonusToScore(int pinsKnockedDown) {
 void Game::SetUpSpareStrikeBonus(int pinsKnockedDown) {
     if (pinsUp == 0)
     {
-        subsequentRollsToDouble += pinsKnockedDown == 10 ? 2 : 1;
+        if (pinsKnockedDown == 10) subsequentRollsToDouble += 2;
+        else subsequentRollsToDouble++;
     }
 }
 

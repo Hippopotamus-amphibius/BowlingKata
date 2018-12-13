@@ -83,3 +83,31 @@ TEST_CASE("Roll 10 (strike), 3, 4 Scores 24","[score]")
     // Assert
     REQUIRE(24 == g.ScoreGame());
 }
+
+TEST_CASE("Roll 10, 10, 4, 3 Scores 24+17+4+3","[score]")
+{
+    // Arrange
+    Game g;
+    // Act
+    g.Roll(10);
+    g.Roll(3);
+    g.Roll(4);
+    for (int roll = 0; roll < 16; roll++) {
+        g.Roll(0);
+    }
+    // Assert
+    REQUIRE(24 == g.ScoreGame());
+}
+
+TEST_CASE("Perfect Game Scores 300","[score]")
+{
+    // Arrange
+    Game g;
+    // Act
+    for (int roll = 0; roll < 12; roll++) {
+        g.Roll(10);
+    }
+    // Assert
+    REQUIRE(300 == g.ScoreGame());
+}
+
