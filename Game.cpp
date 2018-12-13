@@ -23,10 +23,15 @@ void Game::Roll(int pinsKnockedDown) {
     pinsUp -= pinsKnockedDown;
     if (pinsUp == 0)
     {
-        subsequentRollsToDouble++;
+        subsequentRollsToDouble += pinsKnockedDown == 10 ? 2 : 1;
     }
-    if (rollNumberWithinFrame == 2) pinsUp = 10;
-    rollNumberWithinFrame = rollNumberWithinFrame == 1 ? 2 : 1;
+    if (rollNumberWithinFrame == 2 || pinsUp == 0)
+    {
+        pinsUp = 10;
+        rollNumberWithinFrame = 1;
+    } else{
+        rollNumberWithinFrame++;
+    }
 }
 
 /**
