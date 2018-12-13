@@ -2,6 +2,7 @@
 // Created by brettmcrae on 12/12/2018.
 //
 
+#include <stdexcept>
 #include "Game.h"
 
 /**
@@ -9,6 +10,10 @@
  * @param pinsKnockedDown
  */
 void Game::Roll(int pinsKnockedDown) {
+    if (pinsKnockedDown > pinsUp)
+    {
+        throw std::invalid_argument("pinsKnockedDown cannot be greater than the number of pins standing");
+    }
     if (subsequentRollsToDouble > 0)
     {
         score += pinsKnockedDown;

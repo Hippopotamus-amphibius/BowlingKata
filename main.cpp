@@ -49,3 +49,12 @@ TEST_CASE("Roll 5,5,3 Scores 16 (single spare)","[score]")
     // Assert
     REQUIRE(16 == g.ScoreGame());
 }
+
+TEST_CASE("Knocking Down more pins than are up is an exception", "[score]")
+{
+    // Arrange
+    Game g;
+    // Act
+    // Assert
+    REQUIRE_THROWS_AS(g.Roll(11), std::invalid_argument);
+}
