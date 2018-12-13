@@ -10,26 +10,45 @@
  * @param pinsKnockedDown
  */
 void Game::Roll(int pinsKnockedDown) {
+    ValidateRoll(pinsKnockedDown);
+    AddSpareStrikeBonusToScore(pinsKnockedDown);
+    score += pinsKnockedDown;
+    pinsUp -= pinsKnockedDown;
+    SetUpSpareStrikeBonus(pinsKnockedDown);
+    SetUpNextRoll();
+}
+
+void Game::ValidateRoll(int pinsKnockedDown)
+{
     if (pinsKnockedDown > pinsUp)
     {
         throw std::invalid_argument("pinsKnockedDown cannot be greater than the number of pins standing");
     }
+}
+
+void Game::AddSpareStrikeBonusToScore(int pinsKnockedDown) {
     if (subsequentRollsToDouble > 0)
     {
         score += pinsKnockedDown;
         subsequentRollsToDouble--;
     }
-    score += pinsKnockedDown;
-    pinsUp -= pinsKnockedDown;
+}
+
+void Game::SetUpSpareStrikeBonus(int pinsKnockedDown) {
     if (pinsUp == 0)
     {
         subsequentRollsToDouble += pinsKnockedDown == 10 ? 2 : 1;
     }
+}
+
+void Game::SetUpNextRoll() {
     if (rollNumberWithinFrame == 2 || pinsUp == 0)
     {
         pinsUp = 10;
         rollNumberWithinFrame = 1;
-    } else{
+    }
+    else
+    {
         rollNumberWithinFrame++;
     }
 }

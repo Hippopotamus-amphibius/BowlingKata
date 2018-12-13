@@ -11,9 +11,15 @@ class Game {
     int pinsUp = 10;
     int subsequentRollsToDouble = 0;
     int rollNumberWithinFrame = 1;
+    void SetUpNextRoll();
+    void SetUpSpareStrikeBonus(int pinsKnockedDown);
+    void AddSpareStrikeBonusToScore(int pinsKnockedDown);
+    void ValidateRoll(int pinsKnockedDown);
 public:
     void Roll(int pinsKnockedDown);
     int ScoreGame();
+
+
 };
 
 
